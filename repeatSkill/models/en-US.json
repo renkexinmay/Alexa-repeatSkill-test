@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "hello world",
+            "invocationName": "repeat",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -16,11 +16,8 @@
                     "samples": []
                 },
                 {
-                    "name": "HelloWorldIntent",
-                    "slots": [],
-                    "samples": [
-                        "hello"
-                    ]
+                    "name": "AMAZON.RepeatIntent",
+                    "samples": []
                 },
                 {
                     "name": "WhateverIntent",
