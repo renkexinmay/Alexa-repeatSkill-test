@@ -36,13 +36,12 @@ const HelloWorldIntentHandler = {
   },
 };
 
-const WhateverIntentHandler = {
+const RepeatIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'WhateverIntent';
+      && handlerInput.requestEnvelope.request.intent.name === 'RepeatIntent';
   },
   handle(handlerInput) {
-  	console.log('Whateverintent started')
     const currentIntent = handlerInput.requestEnvelope.request.intent;
     var prompt = '';
     for (const slotName of Object.keys(handlerInput.requestEnvelope.request.intent.slots)) {
@@ -54,12 +53,11 @@ const WhateverIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(prompt)
-      .reprompt(prompt)
       .withSimpleCard('Hello World', prompt)
       .getResponse();
-
   },
 };
+
 
 const HelpIntentHandler = {
   canHandle(handlerInput) {
