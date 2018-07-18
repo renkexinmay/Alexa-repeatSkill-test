@@ -21,25 +21,11 @@ const LaunchRequestHandler = {
   },
 };
 
-const HelloWorldIntentHandler = {
-  canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
-  },
-  handle(handlerInput) {
-    const speechText = 'Hello Super World!';
-
-    return handlerInput.responseBuilder
-      .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
-      .getResponse();
-  },
-};
 
 const RepeatIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'RepeatIntent';
+      && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.RepeatIntent';
   },
   handle(handlerInput) {
     const currentIntent = handlerInput.requestEnvelope.request.intent;
@@ -122,8 +108,8 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 const languageStrings = {
   en: {
     translation: {
-      SKILL_NAME: 'Minecraft Helper',
-      WELCOME_MESSAGE: 'Welcome to hello world',
+      SKILL_NAME: 'repeatgame',
+      WELCOME_MESSAGE: 'Welcome to repeatskill',
       WELCOME_REPROMPT: 'For instructions on what you can say, please say help me.',
       DISPLAY_CARD_TITLE: '%s  - Recipe for %s.',
       HELP_MESSAGE: 'You can ask questions such as, what\'s the recipe for a %s, or, you can say exit...Now, what can I help you with?',
@@ -177,8 +163,7 @@ const LocalizationInterceptor = {
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
-    HelloWorldIntentHandler,
-    WhateverIntentHandler,
+    RepeatIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
