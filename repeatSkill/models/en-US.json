@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "repeatskill",
+            "invocationName": "hello world",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -16,14 +16,51 @@
                     "samples": []
                 },
                 {
-                    "name": "AMAZON.RepeatIntent",
-                    "samples": []
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "hello"
+                    ]
                 },
-                
+                {
+                    "name": "WhateverIntent",
+                    "slots": [
+                        {
+                            "name": "FreeText",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "Yes"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Imagine {FreeText}"
+                    ]
+                }
             ],
             "types": []
         },
-        
+        "dialog": {
+            "intents": [
+                {
+                    "name": "WhateverIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "FreeText",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": true,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "confirmation": "Confirm.Slot.771629655291.128567788586",
+                                "elicitation": "Elicit.Slot.771629655291.128567788586"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
         "prompts": [
             {
                 "id": "Confirm.Slot.771629655291.128567788586",
